@@ -18,10 +18,23 @@
     sessionStorage.removeItem('starkDemoSession');
   }
   if (demoSession?.role) {
-    banner('MODE DEMO: tampilan memakai akun contoh. Data dan perubahan tidak tersimpan; fitur yang memerlukan database tidak aktif.');
+    banner(demoSession.role === 'admin'
+      ? 'MODE DEMO: buat nota dengan nomor 081234567801 atau 081234567802 agar masuk ke akun customer demo. Data disimpan di browser ini saja.'
+      : 'MODE DEMO: pesanan dan poin dimulai dari 0. Aktivitas demo disimpan di browser ini saja.');
     const notice = document.getElementById('databaseStatusNotice');
-    if (notice) notice.style.cssText += ';background:#eaf2ff;color:#174a91;border:1px solid #c9dcff';
-    return;
+    if (notice) {
+      notice.style.cssText += ';background:#eaf2ff;color:#174a91;border:1px solid #c9dcff;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap';
+      const reset = document.createElement('button');
+      reset.type = 'button';
+      reset.textContent = 'Reset simulasi';
+      reset.style.cssText = 'border:0;border-radius:8px;padding:7px 11px;background:#d5e5ff;color:#174a91;font:600 12px system-ui;cursor:pointer';
+      reset.addEventListener('click', () => {
+        if (!window.confirm('Hapus semua pesanan, poin, dan penukaran demo di browser ini?')) return;
+        localStorage.removeItem('starkLaundryDemoData:v1');
+        location.reload();
+      });
+      notice.append(reset);
+    }
   }
   const showDatabaseFallback = () => {
     if (/\/riwayat\//.test(path)) { const box=document.getElementById('cardsContainer');if(box)box.innerHTML=empty('Memuat riwayat…','Mengambil data transaksi dari database.'); }
@@ -55,7 +68,7 @@
     document.querySelectorAll('main h2').forEach(heading=>{if(heading.textContent.trim()==='Daftar Cucian Berjalan'){const badge=heading.parentElement?.querySelector('span');if(badge)badge.textContent=`${active.length} Aktif`;}});
     document.querySelectorAll('main span').forEach(label=>{if(label.textContent.trim().toLowerCase()==='total laundry selesai'){const value=label.parentElement?.querySelector('.font-headline-md,.font-headline-lg');if(value)value.textContent=String(data.orders.filter(o=>o.status==='completed').length)+' Transaksi';}});
     const search=document.getElementById('laundrySearchInput');
-    if(search){let feed=document.getElementById('databaseCustomerOrders');if(!feed){feed=document.createElement('div');feed.id='databaseCustomerOrders';feed.style.cssText='display:grid;gap:12px;margin:14px 0';search.closest('div')?.insertAdjacentElement('afterend',feed);}feed.innerHTML=active.length?active.map(o=>`${card(o)}<button type="button" data-open-order-qr="${safe(o.receipt_code)}" style="margin:-8px 0 8px auto;padding:9px 14px;border:0;border-radius:9px;background:#e8eeff;color:#1455c0;font-weight:700">Tampilkan QR pesanan</button>`).join(''):empty('Belum ada pesanan aktif','Pesanan laundry akan tampil di sini setelah kasir membuat nota untuk akun ini.');feed.querySelectorAll('[data-open-order-qr]').forEach(button=>button.addEventListener('click',()=>window.openDatabaseOrderQr(button.dataset.openOrderQr)));search.addEventListener('input',()=>{const q=search.value.toLowerCase();feed.querySelectorAll('.order-card').forEach(el=>el.hidden=!el.textContent.toLowerCase().includes(q));});const sampleGrid=feed.parentElement?.nextElementSibling;if(sampleGrid?.querySelector('[onclick*="openQrModal"]'))sampleGrid.hidden=true;}
+    if(search){let feed=document.getElementById('databaseCustomerOrders');if(!feed){feed=document.createElement('div');feed.id='databaseCustomerOrders';feed.style.cssText='display:grid;gap:12px;margin:14px 0';search.closest('div')?.insertAdjacentElement('afterend',feed);}feed.hidden=false;feed.innerHTML=active.length?active.map(o=>`${card(o)}<button type="button" data-open-order-qr="${safe(o.receipt_code)}" style="margin:-8px 0 8px auto;padding:9px 14px;border:0;border-radius:9px;background:#e8eeff;color:#1455c0;font-weight:700">Tampilkan QR pesanan</button>`).join(''):empty('Belum ada pesanan aktif','Pesanan laundry akan tampil di sini setelah kasir membuat nota untuk akun ini.');feed.querySelectorAll('[data-open-order-qr]').forEach(button=>button.addEventListener('click',()=>window.openDatabaseOrderQr(button.dataset.openOrderQr)));search.addEventListener('input',()=>{const q=search.value.toLowerCase();feed.querySelectorAll('.order-card').forEach(el=>el.hidden=!el.textContent.toLowerCase().includes(q));});const sampleGrid=feed.parentElement?.nextElementSibling;if(sampleGrid?.querySelector('[onclick*="openQrModal"]'))sampleGrid.hidden=true;}
     // Remove the sample receipt cards so customer views only their account records.
     document.querySelectorAll('main [onclick*="openQrModal"]').forEach(button=>{let node=button;for(let i=0;i<7&&node.parentElement;i++,node=node.parentElement){if(/rounded-(xl|2xl)/.test(node.className||'')&&/shadow/.test(node.className||'')){node.hidden=true;break;}}});
     document.querySelectorAll('main [data-order-count]').forEach(el=>el.textContent=String(data.orders.length));

@@ -3,10 +3,10 @@ let activeRole = 'pelanggan';
 // Akun ini sengaja bersifat publik untuk demo GitHub Pages. Jangan gunakan
 // akun demo untuk data nyata; autentikasi dan transaksi tidak tersimpan.
 const demoAccounts = [
-    { role: 'customer', identifier: 'demo.customer1@starklaundry.test', password: 'DemoCuci1!', name: 'Pelanggan Demo 1' },
-    { role: 'customer', identifier: 'demo.customer2@starklaundry.test', password: 'DemoCuci2!', name: 'Pelanggan Demo 2' },
-    { role: 'admin', identifier: 'adm_demo_01', password: 'DemoKasir1!', name: 'Admin Demo 1' },
-    { role: 'admin', identifier: 'adm_demo_02', password: 'DemoKasir2!', name: 'Admin Demo 2' }
+    { role: 'customer', id: 1, identifier: 'demo.customer1@starklaundry.test', password: 'DemoCuci1!', name: 'Pelanggan Demo 1', phone: '081234567801' },
+    { role: 'customer', id: 2, identifier: 'demo.customer2@starklaundry.test', password: 'DemoCuci2!', name: 'Pelanggan Demo 2', phone: '081234567802' },
+    { role: 'admin', id: 11, identifier: 'adm_demo_01', password: 'DemoKasir1!', name: 'Admin Demo 1' },
+    { role: 'admin', id: 12, identifier: 'adm_demo_02', password: 'DemoKasir2!', name: 'Admin Demo 2' }
 ];
 
 function switchRole(role) {
@@ -82,8 +82,10 @@ async function handleLogin(e) {
         if (demoAccount) {
             sessionStorage.setItem('starkDemoSession', JSON.stringify({
                 role: demoAccount.role,
+                id: demoAccount.id,
                 name: demoAccount.name,
-                identifier: demoAccount.identifier
+                identifier: demoAccount.identifier,
+                phone: demoAccount.phone || null
             }));
 
             const destination = role === 'customer'
