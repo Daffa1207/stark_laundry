@@ -1,0 +1,96 @@
+.stark-loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(12, 67, 145, .78), rgba(232, 243, 255, .92));
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .22s ease, visibility .22s ease;
+}
+
+.stark-loading-screen.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.stark-loading-card {
+  width: min(100%, 390px);
+  padding: clamp(26px, 6vw, 38px) 28px 30px;
+  border: 1px solid rgba(255, 255, 255, .82);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 24px 70px rgba(15, 53, 104, .24);
+  text-align: center;
+  transform: translateY(10px) scale(.98);
+  transition: transform .22s ease;
+}
+
+.is-visible .stark-loading-card { transform: translateY(0) scale(1); }
+
+.stark-loading-logo {
+  display: block;
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  margin: 0 auto 15px;
+}
+
+.stark-loading-brand {
+  margin: 0;
+  color: #123a72;
+  font: 800 16px/1.2 system-ui, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.stark-loading-title {
+  margin: 17px 0 6px;
+  color: #102b50;
+  font: 750 clamp(20px, 5vw, 24px)/1.25 system-ui, sans-serif;
+}
+
+.stark-loading-message {
+  min-height: 42px;
+  margin: 0 auto;
+  max-width: 290px;
+  color: #58708e;
+  font: 400 14px/1.5 system-ui, sans-serif;
+}
+
+.stark-loading-track {
+  height: 6px;
+  overflow: hidden;
+  margin: 23px 0 0;
+  border-radius: 999px;
+  background: #e8f0fb;
+}
+
+.stark-loading-track::after {
+  display: block;
+  width: 42%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #1689ed, #1452bb);
+  content: "";
+  animation: stark-loading-progress 1.15s ease-in-out infinite;
+}
+
+@keyframes stark-loading-progress {
+  from { transform: translateX(-110%); }
+  to { transform: translateX(250%); }
+}
+
+@media (max-width: 420px) {
+  .stark-loading-screen { padding: 18px; }
+  .stark-loading-card { border-radius: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stark-loading-screen, .stark-loading-card { transition: none; }
+  .stark-loading-track::after { animation-duration: 2.5s; }
+}

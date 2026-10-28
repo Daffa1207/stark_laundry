@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Stark Laundry - Portal Pelanggan</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-fixed-dim":"#4edea3","surface-container":"#eaedff","error":"#ba1a1a","secondary":"#006c49","surface-variant":"#dae2fd","inverse-surface":"#283044","primary-fixed":"#dbe1ff","inverse-primary":"#b4c5ff","on-tertiary":"#ffffff","surface-tint":"#0053db","surface-dim":"#d2d9f4","on-primary":"#ffffff","on-secondary-fixed":"#002113","on-tertiary-fixed":"#2a1700","outline-variant":"#c3c6d7","on-primary-container":"#eeefff","tertiary-fixed-dim":"#ffb95f","on-primary-fixed-variant":"#003ea8","on-surface-variant":"#434655","tertiary-container":"#996100","surface-container-lowest":"#ffffff","surface-container-highest":"#dae2fd","on-tertiary-container":"#ffeedd","inverse-on-surface":"#eef0ff","surface-container-low":"#f2f3ff","secondary-fixed":"#6ffbbe","on-secondary-fixed-variant":"#005236","outline":"#737686","primary-fixed-dim":"#b4c5ff","on-error":"#ffffff","surface-container-high":"#e2e7ff","surface-bright":"#faf8ff","on-background":"#131b2e","tertiary":"#784b00","on-tertiary-fixed-variant":"#653e00","on-secondary":"#ffffff","on-error-container":"#93000a","background":"#faf8ff","secondary-container":"#6cf8bb","tertiary-fixed":"#ffddb8","on-primary-fixed":"#00174b","primary":"#004ac6","error-container":"#ffdad6","primary-container":"#2563eb","on-secondary-container":"#00714d","on-surface":"#131b2e","surface":"#faf8ff"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter-md":"1.5rem","space-lg":"1.5rem","space-md":"1rem","gutter-lg":"2rem","space-xs":"0.25rem","space-sm":"0.5rem","margin-lg":"2rem","margin":"1rem","space-xl":"2rem","margin-md":"1.5rem","gutter":"1rem"},fontFamily:{"headline-sm":["Plus Jakarta Sans"],"code-num":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"]},fontSize:{"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}],"code-num":["15px",{lineHeight:"20px",letterSpacing:"0.02em",fontWeight:"600"}],"headline-md":["22px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-lg-mobile":["22px",{lineHeight:"28px",fontWeight:"600"}],"display-lg":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"700"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.01em",fontWeight:"600"}],"display-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}]}}}}</script>    <link rel="stylesheet" href="customer.css">
+    <link rel="stylesheet" href="../site-header.css">
+    <link rel="stylesheet" href="../site-footer.css">
+  <link rel="stylesheet" href="../loading-screen.css">
+</head><body class="bg-background font-body-md text-on-surface antialiased"><header class="site-header fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin md:px-margin-md lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="site-header-brand-center flex items-center gap-space-md"><img alt="Logo Stark Laundry" class="site-header-logo h-8 w-auto object-contain" src="../login/stark-laundry-mark.png"/><div class="flex flex-col"><span class="site-header-brand-name font-headline-sm text-headline-sm text-on-surface leading-tight"><span>Stark</span> <span>Laundry</span></span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Portal Pelanggan</span></div></div><button class="site-header-menu-toggle site-header-menu-toggle--xl" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="site-nav-customer"><span class="material-symbols-outlined" aria-hidden="true">menu</span></button><nav class="site-header-nav hidden md:flex items-center gap-space-xs p-space-xs bg-surface-container-low rounded-xl" id="site-nav-customer" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><div class="site-header-mobile-profile"><div class="site-header-mobile-profile-icon"><span class="material-symbols-outlined" aria-hidden="true">person</span></div><div class="site-header-mobile-profile-copy"><strong data-user-name>Pelanggan</strong><span>Member Aktif</span></div></div><a aria-current="page" class="px-space-md py-space-sm transition-colors bg-primary-container text-on-primary-container font-semibold rounded-lg" data-path="laundry-saya" href="../customer/customer.html">Laundry Saya</a><a class="px-space-md py-space-sm font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="riwayat" href="../riwayat/riwayat.html">Riwayat</a><a class="px-space-md py-space-sm font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="hadiah" href="../hadiah/hadiah.html">Hadiah</a></nav><div class="flex items-center gap-space-md"><div class="site-header-profile-chip flex items-center gap-space-sm pl-space-sm pr-space-md py-space-xs rounded-full bg-surface-container-low"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="site-header-user-details hidden sm:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-none mb-0.5" data-user-name>Pelanggan</span><span class="font-label-sm text-label-sm text-secondary leading-none font-semibold">Member Aktif</span></div></div><a class="site-header-logout inline-flex items-center justify-center px-space-md py-space-sm rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="login" href="../login/login.html">Logout</a></div></div></header><main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="w-full max-w-7xl mx-auto px-margin md:px-margin-md lg:px-margin-lg py-space-lg md:py-space-xl flex flex-col gap-space-lg">
+<!-- Top Greeting & Header Bar -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md stark-page-topbar">
+<div class="flex flex-col gap-space-xs stark-page-heading">
+<div class="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm stark-page-eyebrow">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span>Stark Laundry Buka • Pukul 07:00 - 21:00 WIB</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">Laundry Saya</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Halo, <span data-user-first-name>Pelanggan</span>! <span class="inline-block hover:rotate-12 transition-transform cursor-default">👋</span> Pantau status cucian kamu secara realtime di sini.
+        </p>
+</div>
+<!-- Action Search & QR Scan Button -->
+<div class="flex w-full flex-col items-stretch gap-space-sm sm:flex-row sm:items-center lg:w-auto">
+<button class="inline-flex items-center justify-center gap-2 px-space-md py-2.5 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:shadow-md transition-all active:scale-[0.98]" onclick="openScanModal()">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+<span>+ Scan Cucian Baru</span>
+</button>
+</div>
+</div>
+<!-- Summary Stat Cards (3 Bento Columns) -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-space-md">
+<!-- Card 1: Cucian Sedang Aktif -->
+<div class="flex items-center gap-4 p-space-md rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[26px]">local_laundry_service</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Cucian Sedang Aktif</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">2 Pesanan</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">1 Sedang Dicuci • 1 Siap Diambil</span>
+</div>
+</div>
+<!-- Card 2: Saldo Poin Reward -->
+<div class="flex flex-col gap-3 p-space-md rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow sm:flex-row sm:items-center sm:justify-between">
+<div class="flex items-center gap-4 min-w-0">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[26px]">stars</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Saldo Poin Reward</span>
+<span class="font-headline-md text-headline-md text-on-surface">380 Pts</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">Tier Silver Stark</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 self-end px-3 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-sm text-label-sm shrink-0 transition-colors sm:self-auto" href="../hadiah/hadiah.html">
+<span>Tukar Hadiah</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Card 3: Lokasi Counter Utama -->
+<div class="flex items-center gap-4 p-space-md rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[26px]">storefront</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Lokasi Cucian Anda</span>
+<span class="font-headline-md text-headline-md text-on-surface break-words">Stark Laundry</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant break-words">SCBD Lot 17 Park</span>
+</div>
+</div>
+</div>
+<!-- Active Laundry Section Title -->
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Daftar Cucian Berjalan</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-primary font-label-sm text-label-sm font-bold">2 Aktif</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant hidden sm:inline">Pembaruan status otomatis setiap 15 detik</span>
+</div>
+<div class="mb-space-md rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="h-11 w-full rounded-lg bg-surface-container-low pl-11 pr-space-md font-body-md text-body-md text-on-surface placeholder:text-outline outline-none transition-all focus:bg-surface-container-lowest" id="laundrySearchInput" placeholder="Cari ID laundry atau jenis cucian..." type="text"/>
+</div>
+</div>
+<!-- Pesanan hanya dirender dari database; tidak ada kartu contoh. -->
+<div class="flex flex-col gap-space-lg" id="databaseCustomerOrders"></div>
+<!-- Friendly Instruction Banner -->
+<div class="flex flex-col sm:flex-row items-center gap-space-md p-space-md md:p-space-lg rounded-2xl bg-surface-container-low text-on-surface">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[28px]">info</span>
+</div>
+<div class="flex flex-col flex-1 text-center sm:text-left">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Ingin Menambahkan Cucian Baru?</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Pesanan tampil otomatis jika kasir mencatatnya menggunakan akun atau nomor WhatsApp yang terdaftar. Pindai QR untuk membaca kode nota; bila pesanan belum muncul, pastikan data kontak saat transaksi sesuai dengan akun Anda.
+        </p>
+</div>
+<button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-xl bg-surface-container-highest hover:bg-surface-container-high text-primary font-label-md text-label-md shrink-0 transition-colors" onclick="openScanModal()">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+<span>Scan Sekarang</span>
+</button>
+</div>
+<!-- MODAL: QR PENGAMBILAN CUCIAN (INTERAKTIF) -->
+<div class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-inverse-surface/60 backdrop-blur-sm transition-opacity" id="qrModal">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-200">
+<!-- Modal Header -->
+<div class="p-space-md flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">qr_code_2</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold" id="modalTicketId">QR Pengambilan Cucian</h3>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Valid &amp; Siap Scan</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors" onclick="closeQrModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-space-lg flex flex-col items-center gap-space-md text-center">
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface font-semibold">Tunjukkan QR ke Kasir</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Kasir akan melakukan verifikasi rak sebelum menyerahkan pakaian Anda.</p>
+</div>
+<!-- Clean Sharp QR Code Display -->
+<div class="p-4 bg-surface-container-lowest rounded-2xl shadow-md border-0 flex flex-col items-center gap-2">
+<!-- Inline High Resolution Stylized QR SVG -->
+<svg class="w-48 h-48 text-on-surface" fill="currentColor" viewbox="0 0 100 100">
+<!-- Corner Finder 1 -->
+<rect fill="none" height="26" rx="4" stroke="currentColor" stroke-width="4" width="26" x="5" y="5"></rect>
+<rect fill="currentColor" height="14" rx="2" width="14" x="11" y="11"></rect>
+<!-- Corner Finder 2 -->
+<rect fill="none" height="26" rx="4" stroke="currentColor" stroke-width="4" width="26" x="69" y="5"></rect>
+<rect fill="currentColor" height="14" rx="2" width="14" x="75" y="11"></rect>
+<!-- Corner Finder 3 -->
+<rect fill="none" height="26" rx="4" stroke="currentColor" stroke-width="4" width="26" x="5" y="69"></rect>
+<rect fill="currentColor" height="14" rx="2" width="14" x="11" y="75"></rect>
+<!-- Random Data Cells Matrix -->
+<rect height="6" rx="1" width="6" x="36" y="8"></rect>
+<rect height="6" rx="1" width="6" x="46" y="8"></rect>
+<rect height="6" rx="1" width="6" x="56" y="8"></rect>
+<rect height="6" rx="1" width="6" x="36" y="18"></rect>
+<rect height="6" rx="1" width="6" x="56" y="18"></rect>
+<rect height="6" rx="1" width="6" x="36" y="28"></rect>
+<rect height="6" rx="1" width="6" x="46" y="28"></rect>
+<rect height="6" rx="1" width="6" x="8" y="36"></rect>
+<rect height="6" rx="1" width="6" x="18" y="46"></rect>
+<rect height="6" rx="1" width="6" x="28" y="36"></rect>
+<rect height="6" rx="1" width="6" x="28" y="56"></rect>
+<rect fill="#004ac6" height="24" rx="4" width="24" x="38" y="38"></rect>
+<!-- Center Mini Brand Dot -->
+<circle cx="50" cy="50" fill="#ffffff" r="6"></circle>
+<!-- Lower matrix -->
+<rect height="6" rx="1" width="6" x="68" y="36"></rect>
+<rect height="6" rx="1" width="6" x="78" y="46"></rect>
+<rect height="6" rx="1" width="6" x="88" y="36"></rect>
+<rect height="6" rx="1" width="6" x="68" y="56"></rect>
+<rect height="6" rx="1" width="6" x="88" y="56"></rect>
+<rect height="6" rx="1" width="6" x="36" y="68"></rect>
+<rect height="6" rx="1" width="6" x="46" y="78"></rect>
+<rect height="6" rx="1" width="6" x="56" y="68"></rect>
+<rect height="6" rx="1" width="6" x="36" y="88"></rect>
+<rect height="6" rx="1" width="6" x="56" y="88"></rect>
+<rect height="6" rx="1" width="6" x="68" y="68"></rect>
+<rect height="6" rx="1" width="6" x="78" y="78"></rect>
+<rect height="6" rx="1" width="6" x="88" y="88"></rect>
+<rect height="6" rx="1" width="6" x="78" y="88"></rect>
+</svg>
+<span class="font-code-num text-code-num font-bold text-primary tracking-widest" id="modalQrCodeText">Stark-PU-LD101</span>
+</div>
+<!-- Ticket Summary Card Inside Modal -->
+<div class="w-full bg-surface-container-low rounded-xl p-space-md text-left flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Nama Pelanggan</span>
+<span class="font-label-md text-label-md text-on-surface font-bold" data-user-name>Pelanggan</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Layanan</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold text-right" id="modalService">Bed Cover King</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Lokasi Rak</span>
+<span class="font-label-md text-label-md text-secondary font-bold" id="modalRack">Rak B-04</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Status Pembayaran</span>
+<span class="font-label-md text-label-md text-secondary font-bold" id="modalPayment">Lunas QRIS</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-relaxed">
+          Setelah staf kasir memindai QR code ini dan menyerahkan pakaian, tiket pesanan ini akan otomatis dipindahkan ke tab <strong>Riwayat</strong>.
+        </p>
+<!-- Close Action -->
+<button class="w-full py-3 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors" onclick="closeQrModal()">
+          Tutup Jendela
+        </button>
+</div>
+</div>
+</div>
+<!-- MODAL: SCAN NOTA BARU -->
+<div class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-inverse-surface/60 backdrop-blur-sm transition-opacity" id="scanModal">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+<div class="p-space-md flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Scan Nota Kasir</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors" onclick="closeScanModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-space-lg flex flex-col items-center gap-space-md text-center">
+<!-- Camera viewfinder simulator -->
+<div class="relative w-full max-w-64 aspect-square rounded-2xl bg-inverse-surface flex items-center justify-center overflow-hidden">
+<video id="customer-scan-video" class="hidden absolute inset-0 w-full h-full object-cover" autoplay playsinline muted></video>
+<div class="absolute inset-4 rounded-xl border-2 border-dashed border-primary-fixed/60 pointer-events-none"></div>
+<span class="material-symbols-outlined text-outline text-[48px]" id="customer-camera-placeholder">photo_camera</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="customer-camera-status" role="status">Kamera akan dibuka saat pemindai dimulai.</p>
+<div class="flex flex-col gap-1">
+<p class="font-headline-sm text-headline-sm text-on-surface font-semibold">Atau Masukkan Nomor Nota Manual</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tercantum di bagian atas struk pembayaran kasir</p>
+</div>
+<div class="flex gap-2 w-full">
+<input class="flex-1 px-4 py-2.5 rounded-xl bg-surface-container text-on-surface font-code-num text-code-num uppercase outline-none focus:ring-2 focus:ring-primary-container" id="manualTicketInput" placeholder="Contoh: LD-103" type="text"/>
+<button class="px-5 py-2.5 rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold transition-colors" onclick="handleManualSubmit()">
+            Hubungkan
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Logic Micro-Script -->
+
+</div></main><footer class="login-page-footer w-full px-margin-md sm:px-margin-lg">
+    <div class="login-footer-main max-w-screen-2xl mx-auto">
+        <section class="login-footer-brand" aria-labelledby="footer-brand-title">
+            <div class="login-footer-brand-name">
+                <img src="../login/stark-laundry-mark.png" alt="" aria-hidden="true" />
+                <h2 id="footer-brand-title">Stark Laundry</h2>
+            </div>
+            <p>Stark Laundry membantu pelanggan mengakses informasi layanan dengan lebih praktis. Melalui akun pelanggan, pesanan, riwayat cucian, dan reward dapat dipantau dalam satu tempat agar informasi yang dibutuhkan lebih mudah ditemukan.</p>
+        </section>
+
+        <section class="login-footer-location" aria-labelledby="footer-location-title">
+            <h2 id="footer-location-title">Lokasi Kami</h2>
+            <div class="login-footer-card">
+                <div>
+                    <h3>Stark Laundry</h3>
+                    <p>Alamat: SCBD Lot 17 Park.</p>
+                </div>
+                <iframe
+                    class="login-footer-map"
+                    title="Peta lokasi Stark Laundry di SCBD Lot 17 Park"
+                    src="https://www.google.com/maps?q=SCBD%20Lot%2017%20Park&amp;output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen
+                ></iframe>
+                
+            </div>
+        </section>
+
+        <section class="login-footer-contact" aria-labelledby="footer-contact-title">
+            <h2 id="footer-contact-title">Hubungi Kami</h2>
+            <p>Punya pertanyaan tentang akun, pesanan, atau layanan Stark Laundry? Anda dapat menghubungi tim kami melalui salah satu kanal berikut. Detail di bawah ini hanya contoh fiktif.</p>
+            <div class="login-footer-contact-details">
+                <div class="login-footer-contact-item">
+                    <span class="material-symbols-outlined" aria-hidden="true">call</span>
+                    <span><strong>Telepon</strong><small>+62 000-0000-0000 · Contoh</small></span>
+                </div>
+                <div class="login-footer-contact-item">
+                    <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                    <span><strong>Email</strong><small>halo@starklaundry.example · Contoh</small></span>
+                </div>
+            </div>
+            <a class="login-footer-contact-link" href="../login/login.html#login-faq">
+                <span class="material-symbols-outlined" aria-hidden="true">support_agent</span>
+                <span><strong>Pusat Informasi</strong><small>Panduan akun dan layanan Stark Laundry</small></span>
+                <span class="material-symbols-outlined login-footer-arrow" aria-hidden="true">chevron_right</span>
+            </a>
+        </section>
+    </div>
+
+    <div class="login-footer-divider max-w-screen-2xl mx-auto"></div>
+
+    <div class="login-footer-bottom max-w-screen-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-space-sm text-center sm:text-left">
+
+        <p class="font-body-sm text-body-sm text-on-surface-variant">
+            © 2024 Stark Laundry. Solusi Operasional Laundry Modern Indonesia.
+        </p>
+
+        <div class="flex items-center gap-space-lg">
+
+            <a
+                class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"
+                href="#"
+            >
+                Privasi
+            </a>
+
+            <a
+                class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"
+                href="#"
+            >
+                Syarat Layanan
+            </a>
+
+            <a
+                class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"
+                href="#"
+            >
+                Kontak POS
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="../camera-scanner.js"></script>
+    <script src="customer.js"></script>
+    <script src="../database-sync.js"></script>
+    <script src="../site-header.js"></script>
+  <script src="../loading-screen.js"></script>
+</body></html>

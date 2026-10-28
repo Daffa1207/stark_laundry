@@ -1,0 +1,14 @@
+# Local secrets and server settings
+.env
+.env.*
+!.env.example
+
+# Local tooling and generated files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.sql.gz
+vendor/
+node_modules/
