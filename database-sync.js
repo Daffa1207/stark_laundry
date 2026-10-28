@@ -18,6 +18,11 @@
     sessionStorage.removeItem('starkDemoSession');
   }
   if (demoSession?.role) {
+    window.addEventListener('storage', event => {
+      if (event.key === 'starkLaundryDemoData:v1') location.reload();
+    });
+  }
+  if (demoSession?.role) {
     banner(demoSession.role === 'admin'
       ? 'MODE DEMO: gunakan nomor 081234567801 / 081234567802 agar nota masuk otomatis ke akun customer. Data hanya di browser ini dan terhapus saat logout.'
       : 'MODE DEMO: data mulai dari 0. Scan atau masukkan kode nota untuk menghubungkan pesanan. Data browser terhapus saat logout.');
