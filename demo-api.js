@@ -116,7 +116,9 @@
         service = { id: store.nextServiceId++, is_active: 1 };
         store.services.push(service);
       }
-      Object.assign(service, { name, category: data.category || 'kiloan', unit: data.unit, price_per_unit: price, minimum_quantity: minimum, estimated_hours: Number(data.estimated_hours) || null });
+      const categoryInput = String(data.category || '').toLowerCase();
+      const category = categoryInput.includes('dry') ? 'dry_clean' : categoryInput.includes('satuan') ? 'satuan' : 'kiloan';
+      Object.assign(service, { name, category, unit: data.unit, price_per_unit: price, minimum_quantity: minimum, estimated_hours: Number(data.estimated_hours) || null });
       writeStore(store);
       return makeResponse({ ok: true, message: 'Layanan demo berhasil disimpan.', id: service.id });
     }
