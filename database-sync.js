@@ -11,6 +11,18 @@
     if (!el) { el=document.createElement('div');el.id='databaseStatusNotice';el.style.cssText='margin:16px auto;padding:12px 16px;max-width:1100px;border-radius:12px;background:#fff1d6;color:#674500;font:500 14px/1.5 system-ui';document.querySelector('main')?.prepend(el); }
     el.textContent=message;
   };
+  let demoSession = null;
+  try {
+    demoSession = JSON.parse(sessionStorage.getItem('starkDemoSession') || 'null');
+  } catch (_) {
+    sessionStorage.removeItem('starkDemoSession');
+  }
+  if (demoSession?.role) {
+    banner('MODE DEMO: tampilan memakai akun contoh. Data dan perubahan tidak tersimpan; fitur yang memerlukan database tidak aktif.');
+    const notice = document.getElementById('databaseStatusNotice');
+    if (notice) notice.style.cssText += ';background:#eaf2ff;color:#174a91;border:1px solid #c9dcff';
+    return;
+  }
   const showDatabaseFallback = () => {
     if (/\/riwayat\//.test(path)) { const box=document.getElementById('cardsContainer');if(box)box.innerHTML=empty('Memuat riwayat…','Mengambil data transaksi dari database.'); }
     if (/\/hadiah\//.test(path)) { const points=document.getElementById('userPointsDisplay');if(points)points.textContent='…';document.querySelectorAll('[data-reward-card]').forEach(card=>card.hidden=true); }

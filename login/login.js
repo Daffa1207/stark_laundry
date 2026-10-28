@@ -1,5 +1,14 @@
 let activeRole = 'pelanggan';
 
+// Akun ini sengaja bersifat publik untuk demo GitHub Pages. Jangan gunakan
+// akun demo untuk data nyata; autentikasi dan transaksi tidak tersimpan.
+const demoAccounts = [
+    { role: 'customer', identifier: 'demo.customer1@starklaundry.test', password: 'DemoCuci1!', name: 'Pelanggan Demo 1' },
+    { role: 'customer', identifier: 'demo.customer2@starklaundry.test', password: 'DemoCuci2!', name: 'Pelanggan Demo 2' },
+    { role: 'admin', identifier: 'adm_demo_01', password: 'DemoKasir1!', name: 'Admin Demo 1' },
+    { role: 'admin', identifier: 'adm_demo_02', password: 'DemoKasir2!', name: 'Admin Demo 2' }
+];
+
 function switchRole(role) {
     activeRole = role;
 
@@ -61,14 +70,42 @@ async function handleLogin(e) {
     `;
 
     try {
+        const role = activeRole === 'pelanggan' ? 'customer' : 'admin';
+        const identifier = document.getElementById('identifier').value.trim().toLowerCase();
+        const password = document.getElementById('password').value;
+        const demoAccount = demoAccounts.find(account =>
+            account.role === role &&
+            account.identifier.toLowerCase() === identifier &&
+            account.password === password
+        );
+
+        if (demoAccount) {
+            sessionStorage.setItem('starkDemoSession', JSON.stringify({
+                role: demoAccount.role,
+                name: demoAccount.name,
+                identifier: demoAccount.identifier
+            }));
+
+            const destination = role === 'customer'
+                ? '../customer/customer.html'
+                : '../pesanan/pesanan.html';
+            if (window.StarkLoading) {
+                await window.StarkLoading.show('login', {
+                    doneMessage: 'Mode demo aktif. Menyiapkan halaman…'
+                });
+            }
+            window.location.assign(destination);
+            return;
+        }
+
         const response = await fetch('../api/auth/login.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'same-origin',
             body: JSON.stringify({
-                role: activeRole === 'pelanggan' ? 'customer' : 'admin',
-                identifier: document.getElementById('identifier').value.trim(),
-                password: document.getElementById('password').value
+                role,
+                identifier,
+                password
             })
         });
         const result = await response.json();

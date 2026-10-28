@@ -1,4 +1,11 @@
 (() => {
+    let demoUser = null;
+    try {
+        demoUser = JSON.parse(sessionStorage.getItem('starkDemoSession') || 'null');
+    } catch (_) {
+        sessionStorage.removeItem('starkDemoSession');
+    }
+
     const toggles = document.querySelectorAll('.site-header-menu-toggle');
 
     const closeMenu = (button) => {
@@ -48,6 +55,12 @@
             event.preventDefault();
             link.setAttribute('aria-busy', 'true');
 
+            if (demoUser) {
+                sessionStorage.removeItem('starkDemoSession');
+                window.location.assign(link.href);
+                return;
+            }
+
             try {
                 const endpoint = new URL('../api/auth/logout.php', window.location.href);
                 const response = await fetch(endpoint, {
@@ -63,7 +76,17 @@
         });
     });
 
-    if (document.querySelector('[data-user-name], [data-user-first-name]')) {
+    if (demoUser?.name) {
+        const fullName = demoUser.name.trim();
+        const firstName = fullName.split(/\s+/)[0];
+        window.StarkUser = demoUser;
+        document.querySelectorAll('[data-user-name]').forEach((element) => {
+            element.textContent = fullName;
+        });
+        document.querySelectorAll('[data-user-first-name]').forEach((element) => {
+            element.textContent = firstName;
+        });
+    } else if (document.querySelector('[data-user-name], [data-user-first-name]')) {
         const endpoint = new URL('../api/auth/me.php', window.location.href);
         fetch(endpoint, { credentials: 'same-origin' })
             .then((response) => response.ok ? response.json() : null)
