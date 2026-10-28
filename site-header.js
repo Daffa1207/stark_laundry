@@ -57,6 +57,7 @@
 
             if (demoUser) {
                 sessionStorage.removeItem('starkDemoSession');
+                localStorage.removeItem('starkLaundryDemoData:v1');
                 window.location.assign(link.href);
                 return;
             }

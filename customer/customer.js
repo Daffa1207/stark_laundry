@@ -32,12 +32,27 @@ function openQrModal(id, service, rack, weight, price, payment) {
       if (window.stopQrCamera && video) window.stopQrCamera(video);
     }
 
-    function handleManualSubmit() {
+    async function handleManualSubmit() {
       const input = document.getElementById('manualTicketInput');
-      if (input.value.trim() !== '') {
-        alert('Kode nota terbaca: ' + input.value.trim().toUpperCase() + '. Pastikan pesanan dibuat untuk akun yang sedang login.');
-      } else {
+      const code = input.value.trim().toUpperCase();
+      if (!code) {
         alert('Silakan masukkan nomor nota yang valid.');
+        return;
+      }
+      try {
+        const response = await fetch('../api/customer/order-token.php', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ receipt_code: code })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.ok) throw new Error(result.message || 'Nota belum dapat dihubungkan.');
+        alert(result.message || 'Nota berhasil dihubungkan ke akun kamu.');
+        closeScanModal();
+        window.location.reload();
+      } catch (error) {
+        alert(error.message || 'Nota belum dapat dihubungkan. Periksa kode nota lalu coba lagi.');
       }
     }
 

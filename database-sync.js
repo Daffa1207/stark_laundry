@@ -19,8 +19,8 @@
   }
   if (demoSession?.role) {
     banner(demoSession.role === 'admin'
-      ? 'MODE DEMO: buat nota dengan nomor 081234567801 atau 081234567802 agar masuk ke akun customer demo. Data disimpan di browser ini saja.'
-      : 'MODE DEMO: pesanan dan poin dimulai dari 0. Aktivitas demo disimpan di browser ini saja.');
+      ? 'MODE DEMO: gunakan nomor 081234567801 / 081234567802 agar nota masuk otomatis ke akun customer. Data hanya di browser ini dan terhapus saat logout.'
+      : 'MODE DEMO: data mulai dari 0. Scan atau masukkan kode nota untuk menghubungkan pesanan. Data browser terhapus saat logout.');
     const notice = document.getElementById('databaseStatusNotice');
     if (notice) {
       notice.style.cssText += ';background:#eaf2ff;color:#174a91;border:1px solid #c9dcff;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap';

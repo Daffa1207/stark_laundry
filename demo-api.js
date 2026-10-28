@@ -46,9 +46,15 @@
   const isoNow = () => new Date().toISOString().slice(0, 19).replace('T', ' ');
   const randomCode = prefix => `${prefix}-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
   const orderItems = order => order.items.map(item => `${item.service_name_snapshot} × ${item.quantity}`).join(', ');
+  const normalizePhone = value => {
+    let digits = String(value || '').replace(/\D/g, '');
+    if (digits.startsWith('62')) digits = `0${digits.slice(2)}`;
+    else if (digits.startsWith('8')) digits = `0${digits}`;
+    return digits;
+  };
 
   function customerDashboard(store, user) {
-    const orders = store.orders.filter(order => order.customer_phone === user.phone).map(order => ({ ...order, items: orderItems(order) }));
+    const orders = store.orders.filter(order => Number(order.customer_id) === Number(user.id)).map(order => ({ ...order, items: orderItems(order) }));
     const redemptions = store.redemptions.filter(item => item.user_id === user.id);
     return {
       ok: true,
@@ -125,7 +131,7 @@
     if (path.endsWith('/api/admin/create-order.php')) {
       if (user?.role !== 'admin') return failed('Aksi ini hanya tersedia untuk Admin / Kasir.', 403);
       const name = String(data.customer_name || '').trim();
-      const phone = String(data.customer_phone || '').replace(/\D/g, '');
+      const phone = normalizePhone(data.customer_phone);
       if (!name || phone.length < 8 || !Array.isArray(data.items) || !data.items.length) return failed('Nama, nomor WhatsApp, dan minimal satu layanan wajib diisi.');
       const items = [];
       for (const item of data.items) {
@@ -136,7 +142,7 @@
       }
       const total = items.reduce((sum, item) => sum + item.line_total, 0);
       const order = {
-        id: store.nextOrderId++, receipt_code: randomCode('LD'), qr_token: randomCode('QR'), customer_id: phone.endsWith('802') ? 2 : phone.endsWith('801') ? 1 : null,
+        id: store.nextOrderId++, receipt_code: randomCode('LD'), qr_token: randomCode('QR'), customer_id: phone === '081234567802' ? 2 : phone === '081234567801' ? 1 : null,
         customer_name: name, customer_phone: phone, status: 'new', payment_method: data.payment_method || 'cash', payment_status: data.payment_status || 'unpaid',
         subtotal: total, total, created_at: isoNow(), items
       };
@@ -169,8 +175,14 @@
     if (path.endsWith('/api/customer/order-token.php')) {
       if (user?.role !== 'customer') return failed('Masuk sebagai pelanggan untuk melihat QR pesanan.', 403);
       const code = String(data.receipt_code || '').trim().toUpperCase();
-      const order = store.orders.find(item => item.receipt_code.toUpperCase() === code && item.customer_phone === user.phone);
-      return order ? makeResponse({ ok: true, qr_token: order.qr_token }) : failed('Nota tidak ditemukan untuk akun demo ini.', 404);
+      const order = store.orders.find(item => item.receipt_code.toUpperCase() === code || item.qr_token.toUpperCase() === code);
+      if (!order) return failed('Nota tidak ditemukan di simulasi ini.', 404);
+      if (order.customer_id && Number(order.customer_id) !== Number(user.id)) return failed('Nota ini sudah terhubung ke akun customer lain.', 409);
+      order.customer_id = Number(user.id);
+      order.customer_name = user.name;
+      order.customer_phone = normalizePhone(user.phone);
+      writeStore(store);
+      return makeResponse({ ok: true, qr_token: order.qr_token, message: 'Nota berhasil dihubungkan ke akun demo.' });
     }
     if (path.endsWith('/api/customer/redeem.php')) {
       if (user?.role !== 'customer') return failed('Masuk sebagai pelanggan untuk menukar hadiah.', 403);
